@@ -1,0 +1,27 @@
+{
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.0.1",
+    "cssnano": "^4.1.10",
+    "node-sass": "^5.0.0",
+    "postcss-loader": "~3.0.0",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1"
+  },
+  "dependencies": {
+    "npm-run-all": "^4.1.5"
+  },
+  "scripts": {
+    "develop": "bundle exec jekyll clean && run-p develop:{webpack,jekyll}",
+    "develop:jekyll": "sleep 5 && bundle exec jekyll serve --watch",
+    "develop:webpack": "webpack --mode development --watch",
+    "build": "run-s build:webpack build:jekyll purgecss",
+    "build:jekyll": "JEKYLL_ENV=production bundle exec jekyll build",
+    "build:webpack": "webpack --mode production"
+  }
+}
